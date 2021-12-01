@@ -9,7 +9,6 @@ namespace AdventOfCode2021.Day_1
 
         /// <summary>
         /// Count the number of times a depth measurement increases from the previous measurement.
-        /// Answer: 1559
         /// </summary>
         public int PartOne()
         {
@@ -22,10 +21,7 @@ namespace AdventOfCode2021.Day_1
                 var parsedLine = int.Parse(line);
                 var previous = i == 0 ? int.Parse(line) : int.Parse(parsed[i - 1]);
                 if (previous < parsedLine)
-                {
                     count++;
-                    previous = parsedLine;
-                }
             }
             return count;
         }
@@ -47,9 +43,7 @@ namespace AdventOfCode2021.Day_1
                 {
                     var sum = int.Parse(parsed[i]) + int.Parse(parsed[i + 1]) + int.Parse(parsed[i + 2]);
                     if (i != 0 && previousSum < sum)
-                    {
                         count++;
-                    }
                     previousSum = sum;
                 }
             }
