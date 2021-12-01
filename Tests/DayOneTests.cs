@@ -1,12 +1,12 @@
 using AdventOfCode2021;
-using Xunit;
 using AdventOfCode2021.Day_1;
+using Xunit;
 
 namespace Tests
 {
     public class DayOneTests
     {
-        private readonly IDay _dayOne;
+        private readonly AbstractDay _dayOne;
         
         public DayOneTests() => _dayOne = new DayOne();
     

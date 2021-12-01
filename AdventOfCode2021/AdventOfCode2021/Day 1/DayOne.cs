@@ -2,19 +2,20 @@
 
 namespace AdventOfCode2021.Day_1
 {
-    public class DayOne : IDay
+    public class DayOne : AbstractDay
     {
         private const string PartOneInputPath = "Inputs\\dayone_partone.txt";
         private const string PartTwoInputPath = "Inputs\\dayone_parttwo.txt";
 
+        protected override string[] GetInput(string inputPath) => File.ReadAllText(inputPath).Split('\n');
+
         /// <summary>
         /// Count the number of times a depth measurement increases from the previous measurement.
         /// </summary>
-        public int PartOne()
+        public override int PartOne()
         {
             var count = 0;
-            string input = File.ReadAllText(PartOneInputPath);
-            string[] parsed = input.Split('\n');
+            string[] parsed = GetInput(PartOneInputPath);
             for (var i = 0; i < parsed.Length; i++)
             {
                 string line = parsed[i];
@@ -31,11 +32,10 @@ namespace AdventOfCode2021.Day_1
         /// So, compare A with B, then compare B with C, then C with D, and so on.
         /// Stop when there aren't enough measurements left to create a new three-measurement sum.
         /// </summary>
-        public int PartTwo()
+        public override int PartTwo()
         {
             var count = 0;
-            string input = File.ReadAllText(PartTwoInputPath);
-            string[] parsed = input.Split('\n');
+            string[] parsed = GetInput(PartTwoInputPath);
             var previousSum = 0;
             for (var i = 0; i <= parsed.Length; i++)
             {
