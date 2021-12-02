@@ -1,5 +1,4 @@
 using AdventOfCode2021;
-using AdventOfCode2021.Day_1;
 using Xunit;
 
 namespace Tests

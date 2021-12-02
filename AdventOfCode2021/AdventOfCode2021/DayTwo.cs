@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2021.Day_2
+﻿namespace AdventOfCode2021
 {
     internal record struct Position
     {
@@ -23,11 +23,11 @@
             Position pos = new();
             string[] inputLines = GetInput(PartOneInputPath);
             
-            for (var i = 0; i < inputLines.Length; i++)
+            for (int i = 0; i < inputLines.Length; i++)
             {
                 string[] lineSplit = inputLines[i].Split(' ');
                 string instruction = lineSplit[0];
-                var times = int.Parse(lineSplit[1]);
+                int times = int.Parse(lineSplit[1]);
 
                 if (instruction == "forward")
                 {
@@ -58,11 +58,11 @@
             Position pos = new();
             string[] inputLines = GetInput(PartTwoInputPath);
             
-            for (var i = 0; i < inputLines.Length; i++)
+            for (int i = 0; i < inputLines.Length; i++)
             {
                 string[] lineSplit = inputLines[i].Split(' ');
                 string instruction = lineSplit[0];
-                var times = int.Parse(lineSplit[1]);
+                int times = int.Parse(lineSplit[1]);
 
                 if (instruction == "forward")
                 {
@@ -74,7 +74,6 @@
                     pos.Aim += instruction == "up" ? -times : times;
                 }
             }
-
             return pos.GetPosition();
         }
     }

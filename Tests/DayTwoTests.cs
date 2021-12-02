@@ -1,5 +1,4 @@
 ﻿using AdventOfCode2021;
-using AdventOfCode2021.Day_2;
 using Xunit;
 
 namespace Tests
@@ -17,9 +16,6 @@ namespace Tests
         public void PartOne() => Assert.Equal(1648020, _dayTwo.PartOne());
 
         [Fact]
-        public void PartTwo()
-        {
-            Assert.Equal(1759818555, _dayTwo.PartTwo());
-        }
+        public void PartTwo() => Assert.Equal(1759818555, _dayTwo.PartTwo());
     }
 }

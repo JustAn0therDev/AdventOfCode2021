@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2021.Day_1
+﻿namespace AdventOfCode2021
 {
     public class DayOne : AbstractDay
     {
@@ -10,13 +10,13 @@
         /// </summary>
         public override int PartOne()
         {
-            var count = 0;
+            int count = 0;
             string[] parsed = GetInput(PartOneInputPath);
-            for (var i = 0; i < parsed.Length; i++)
+            for (int i = 0; i < parsed.Length; i++)
             {
                 string line = parsed[i];
-                var parsedLine = int.Parse(line);
-                var previous = i == 0 ? int.Parse(line) : int.Parse(parsed[i - 1]);
+                int parsedLine = int.Parse(line);
+                int previous = i == 0 ? int.Parse(line) : int.Parse(parsed[i - 1]);
                 if (previous < parsedLine)
                     count++;
             }
@@ -30,14 +30,14 @@
         /// </summary>
         public override int PartTwo()
         {
-            var count = 0;
-            var previousSum = 0;
+            int count = 0;
+            int previousSum = 0;
             string[] parsed = GetInput(PartTwoInputPath);
-            for (var i = 0; i <= parsed.Length; i++)
+            for (int i = 0; i <= parsed.Length; i++)
             {
                 if (i + 2 <= parsed.Length - 1)
                 {
-                    var sum = int.Parse(parsed[i]) + int.Parse(parsed[i + 1]) + int.Parse(parsed[i + 2]);
+                    int sum = int.Parse(parsed[i]) + int.Parse(parsed[i + 1]) + int.Parse(parsed[i + 2]);
                     if (i != 0 && previousSum < sum)
                         count++;
                     previousSum = sum;
