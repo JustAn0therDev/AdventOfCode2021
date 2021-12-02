@@ -1,13 +1,9 @@
-﻿using System.IO;
-
-namespace AdventOfCode2021.Day_1
+﻿namespace AdventOfCode2021.Day_1
 {
     public class DayOne : AbstractDay
     {
         private const string PartOneInputPath = "Inputs\\dayone_partone.txt";
         private const string PartTwoInputPath = "Inputs\\dayone_parttwo.txt";
-
-        protected override string[] GetInput(string inputPath) => File.ReadAllText(inputPath).Split('\n');
 
         /// <summary>
         /// Count the number of times a depth measurement increases from the previous measurement.
@@ -35,8 +31,8 @@ namespace AdventOfCode2021.Day_1
         public override int PartTwo()
         {
             var count = 0;
-            string[] parsed = GetInput(PartTwoInputPath);
             var previousSum = 0;
+            string[] parsed = GetInput(PartTwoInputPath);
             for (var i = 0; i <= parsed.Length; i++)
             {
                 if (i + 2 <= parsed.Length - 1)

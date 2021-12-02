@@ -25,9 +25,6 @@ namespace AdventOfCode2021
         /// Throws this exception if the file does not exist at the specified path (you might have forgotten to set the file to
         /// be copied to output when compiling in the AdventOfCode2021.csproj file).
         /// </exception>
-        protected virtual string[] GetInput(string inputPath)
-        {
-            throw new NotImplementedException("This class does not implement a GetInput action.");
-        }
+        protected static string[] GetInput(string inputPath) => File.ReadAllText(inputPath).Split('\n');
     }
 }
