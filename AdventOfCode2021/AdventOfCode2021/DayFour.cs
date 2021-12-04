@@ -20,11 +20,11 @@ namespace AdventOfCode2021
         {
             string[] lines = File.ReadAllText(DayFourInputPath).Split('\n');
             
-            ImmutableArray<int> bingoCalls = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
+            ImmutableArray<int> draws = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
 
             List<Cell[,]> grids = GetGridsFromInput(lines.Where(static (_, i) => i > 1).ToList());
 
-            foreach (var call in bingoCalls)
+            foreach (int call in draws)
             {
                 Mark(grids, call);
 
@@ -32,7 +32,6 @@ namespace AdventOfCode2021
                 {
                     if (GridHasWon(grids[i]))
                     {
-                        long sum = GetSumOfAllUnmarked(grids[i]);
                         return GetSumOfAllUnmarked(grids[i]) * call;
                     }
                 }
@@ -45,18 +44,13 @@ namespace AdventOfCode2021
         {
             string[] lines = File.ReadAllText(DayFourInputPath).Split('\n');
             
-            ImmutableArray<int> bingoCalls = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
+            ImmutableArray<int> draws = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
 
             List<Cell[,]> grids = GetGridsFromInput(lines.Where(static (_, i) => i > 1).ToList());
 
             Dictionary<int, bool> gridIndexWon = new();
 
-            for (int i = 0; i < grids.Count; i++)
-            {
-                gridIndexWon.Add(i, false);
-            }
-
-            foreach (var call in bingoCalls)
+            foreach (int call in draws)
             {
                 Mark(grids, call);
 
@@ -138,20 +132,26 @@ namespace AdventOfCode2021
             {
                 for (int i = 0; i < GridSize; i++)
                 {
+                    bool numberFound = false;
                     for (int j = 0; j < GridSize; j++)
                     {
                         if (grid[i, j].Value == number)
                         {
                             grid[i, j].Marked = true;
+                            numberFound = true;
+                            break;
                         }
                     }
+
+                    if (numberFound)
+                        break;
                 }
             }
         }
 
-        private static bool GridHasWon(Cell[,] grid)
+        private static bool GridHasWon(Cell[,] grid, bool rows = false, bool columns = false)
         {
-            //lines
+            //checking rows
             for (int row = 0; row < GridSize; row++)
             {
                 bool won = true;
@@ -163,14 +163,11 @@ namespace AdventOfCode2021
                         break;
                     }
                 }
-                
                 if (won)
-                {
                     return true;
-                }
             }
             
-            //columns
+            //checking columns
             for (int col = 0; col < GridSize; col++)
             {
                 bool won = true;
@@ -182,18 +179,15 @@ namespace AdventOfCode2021
                         break;
                     }
                 }
-
                 if (won)
                     return true;
             }
-
             return false;
         }
 
         private static long GetSumOfAllUnmarked(Cell[,] grid)
         {
             long total = 0;
-
             for (int i = 0; i < GridSize; i++)
             {
                 for (int j = 0; j < GridSize; j++)
@@ -202,7 +196,6 @@ namespace AdventOfCode2021
                         total += grid[i, j].Value;
                 }
             }
-
             return total;
         }
     }
