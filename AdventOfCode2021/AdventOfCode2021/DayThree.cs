@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2021
@@ -6,7 +7,8 @@ namespace AdventOfCode2021
     public class DayThree : AbstractDay
     {
         private readonly string DayThreePartOneInputPath = "inputs\\daythree_partone.txt"; 
-        private readonly string DayThreePartTwoInputPath = "inputs\\daythree_parttwo.txt"; 
+        private readonly string DayThreePartTwoInputPath = "inputs\\daythree_parttwo.txt";
+        private const int LineSize = 12;
         
         public override int PartOne()
         {
@@ -15,9 +17,7 @@ namespace AdventOfCode2021
 
             string[] input = GetInput(DayThreePartOneInputPath);
 
-            const int lineSize = 12;
-
-            for (int i = 0; i < lineSize; i++)
+            for (int i = 0; i < LineSize; i++)
             {
                 int oneOccurrences = 0;
                 int zeroOccurrences = 0;
@@ -43,7 +43,48 @@ namespace AdventOfCode2021
 
         public override int PartTwo()
         {
-            return 0;
+            string[] input = GetInput(DayThreePartTwoInputPath);
+
+            List<string> filteredForOxygen = new(input); 
+            List<string> filteredForCarbonDioxide = new(input);
+
+            for (int i = 0; i < LineSize; i++)
+            {
+                (int oneOccurrences, int zeroOccurrences) = GetOccurrencesFor(filteredForOxygen, i);
+
+                if (filteredForOxygen.Count > 1)
+                {
+                    filteredForOxygen = filteredForOxygen.Where(w => oneOccurrences >= zeroOccurrences ? w[i] == '1' : w[i] == '0').ToList();
+                }
+
+                (oneOccurrences, zeroOccurrences) = GetOccurrencesFor(filteredForCarbonDioxide, i);
+
+                if (filteredForCarbonDioxide.Count > 1)
+                {
+                    filteredForCarbonDioxide = filteredForCarbonDioxide.Where(w => oneOccurrences >= zeroOccurrences ? w[i] == '0' : w[i] == '1').ToList();
+                }
+            }
+            
+            return Convert.ToInt32(filteredForOxygen[0], 2) * Convert.ToInt32(filteredForCarbonDioxide[0], 2);
+        }
+
+        private (int, int) GetOccurrencesFor(List<string> report, int bitIndex)
+        {
+            int zero = 0;
+            int one = 0;
+            for (int i = 0; i < report.Count; i++)
+            {
+                if (report[i][bitIndex] == '0')
+                {
+                    zero++;
+                }
+                else
+                {
+                    one++;
+                }
+            }
+
+            return (one, zero);
         }
     }
 }

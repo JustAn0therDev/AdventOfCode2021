@@ -25,6 +25,6 @@ namespace AdventOfCode2021
         /// Throws this exception if the file does not exist at the specified path (you might have forgotten to set the file to
         /// be copied to output when compiling in the AdventOfCode2021.csproj file).
         /// </exception>
-        protected static string[] GetInput(string inputPath) => File.ReadAllText(inputPath).Split('\n');
+        protected static string[] GetInput(string inputPath) => File.ReadAllText(inputPath).Split("\r\n");
     }
 }
