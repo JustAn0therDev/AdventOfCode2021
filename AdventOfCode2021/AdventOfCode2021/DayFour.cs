@@ -14,12 +14,11 @@ namespace AdventOfCode2021
     public class DayFour : AbstractDay
     {
         private const int GridSize = 5;
-        private readonly string DayFourPartOneInputPath = "Inputs\\dayfour_partone.txt";
-        private readonly string DayFourPartTwoInputPath = "Inputs\\dayfour_parttwo.txt";
+        private readonly string DayFourInputPath = "Inputs\\dayfour_partone.txt";
         
         public override long PartOne()
         {
-            string[] lines = File.ReadAllText(DayFourPartOneInputPath).Split('\n');
+            string[] lines = File.ReadAllText(DayFourInputPath).Split('\n');
             
             ImmutableArray<int> bingoCalls = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
 
@@ -44,7 +43,38 @@ namespace AdventOfCode2021
 
         public override long PartTwo()
         {
-            return base.PartTwo();
+            string[] lines = File.ReadAllText(DayFourInputPath).Split('\n');
+            
+            ImmutableArray<int> bingoCalls = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
+
+            List<Cell[,]> grids = GetGridsFromInput(lines.Where(static (_, i) => i > 1).ToList());
+
+            Dictionary<int, bool> gridIndexWon = new();
+
+            for (int i = 0; i < grids.Count; i++)
+            {
+                gridIndexWon.Add(i, false);
+            }
+
+            foreach (var call in bingoCalls)
+            {
+                Mark(grids, call);
+
+                for (int i = 0; i < grids.Count; i++)
+                {
+                    if (GridHasWon(grids[i]))
+                    {
+                        gridIndexWon[i] = true;
+
+                        if (gridIndexWon.Values.Count(w => w) == grids.Count)
+                        {
+                            return GetSumOfAllUnmarked(grids[i]) * call;
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
         private List<Cell[,]> GetGridsFromInput(IReadOnlyList<string> lines)

@@ -11,5 +11,8 @@ namespace Tests
 
         [Fact]
         public void PartOne() => Assert.Equal(51776, _dayFour.PartOne());
+
+        [Fact]
+        public void PartTwo() => Assert.Equal(16830, _dayFour.PartTwo());
     }
 }

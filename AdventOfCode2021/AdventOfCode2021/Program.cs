@@ -1,4 +1,4 @@
 ﻿using System;
 using AdventOfCode2021;
 
-Console.WriteLine(new DayFour().PartOne());
+Console.WriteLine(new DayFour().PartTwo());
