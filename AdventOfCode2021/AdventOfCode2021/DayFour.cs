@@ -71,7 +71,7 @@ namespace AdventOfCode2021
             return 0;
         }
 
-        private List<Cell[,]> GetGridsFromInput(IReadOnlyList<string> lines)
+        private static List<Cell[,]> GetGridsFromInput(IReadOnlyList<string> lines)
         {
             List<Cell[,]> grids = new();
             
@@ -126,7 +126,7 @@ namespace AdventOfCode2021
             return grids;
         }
 
-        private void Mark(List<Cell[,]> grids, int number)
+        private static void Mark(List<Cell[,]> grids, int number)
         {
             foreach (var grid in grids)
             {
