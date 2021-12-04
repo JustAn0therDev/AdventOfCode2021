@@ -68,7 +68,7 @@ namespace AdventOfCode2021
             return Convert.ToInt32(filteredForOxygen[0], 2) * Convert.ToInt32(filteredForCarbonDioxide[0], 2);
         }
 
-        private (int, int) GetOccurrencesFor(List<string> report, int bitIndex)
+        private (int, int) GetOccurrencesFor(IReadOnlyList<string> report, int bitIndex)
         {
             int zero = 0;
             int one = 0;
