@@ -8,7 +8,7 @@
         /// <summary>
         /// Count the number of times a depth measurement increases from the previous measurement.
         /// </summary>
-        public override int PartOne()
+        public override long PartOne()
         {
             int count = 0;
             string[] parsed = GetInput(PartOneInputPath);
@@ -28,7 +28,7 @@
         /// So, compare A with B, then compare B with C, then C with D, and so on.
         /// Stop when there aren't enough measurements left to create a new three-measurement sum.
         /// </summary>
-        public override int PartTwo()
+        public override long PartTwo()
         {
             int count = 0;
             int previousSum = 0;

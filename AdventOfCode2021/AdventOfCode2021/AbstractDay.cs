@@ -5,12 +5,12 @@ namespace AdventOfCode2021
 {
     public abstract class AbstractDay
     {
-        public virtual int PartOne()
+        public virtual long PartOne()
         {
             throw new NotImplementedException("This class does not implement a part one solution.");
         }
 
-        public virtual int PartTwo()
+        public virtual long PartTwo()
         {
             throw new NotImplementedException("This class does not implement a part two solution.");
         }

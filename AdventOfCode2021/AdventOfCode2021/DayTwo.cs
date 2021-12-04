@@ -18,7 +18,7 @@
         /// Calculate the horizontal position and depth you would have after following the planned course.
         /// Depth * horizontal
         /// </summary>
-        public override int PartOne()
+        public override long PartOne()
         {
             Position pos = new();
             string[] inputLines = GetInput(PartOneInputPath);
@@ -53,7 +53,7 @@
         ///  It increases your depth by your aim multiplied by X.
         /// Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned course.
         /// </summary>
-        public override int PartTwo()
+        public override long PartTwo()
         {
             Position pos = new();
             string[] inputLines = GetInput(PartTwoInputPath);

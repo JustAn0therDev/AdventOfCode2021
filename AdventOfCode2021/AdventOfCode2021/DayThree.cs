@@ -10,7 +10,7 @@ namespace AdventOfCode2021
         private readonly string DayThreePartTwoInputPath = "inputs\\daythree_parttwo.txt";
         private const int LineSize = 12;
         
-        public override int PartOne()
+        public override long PartOne()
         {
             string gammaRateBits = string.Empty;
             string epsilonRateBits = string.Empty;
@@ -41,7 +41,7 @@ namespace AdventOfCode2021
             return Convert.ToInt32(gammaRateBits, 2) * Convert.ToInt32(epsilonRateBits, 2);
         }
 
-        public override int PartTwo()
+        public override long PartTwo()
         {
             string[] input = GetInput(DayThreePartTwoInputPath);
 
