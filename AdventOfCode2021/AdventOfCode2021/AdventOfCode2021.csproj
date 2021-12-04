@@ -20,6 +20,10 @@
       <None Update="Inputs\daytwo_parttwo.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Inputs\daythree_partone.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Remove="Inputs\daythree_test.txt" />
     </ItemGroup>
 
 </Project>
