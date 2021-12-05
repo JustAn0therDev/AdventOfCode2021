@@ -13,47 +13,36 @@ namespace AdventOfCode2021
         public IEnumerable<(int, int)> GetCoveredPointsPartOne()
         {
             List<(int, int)> covers = new();
-
             if (BeginX == EndX)
             {
                 IEnumerable<int> yPoints = EndY > BeginY ? Enumerable.Range(BeginY, EndY - BeginY + 1) : Enumerable.Range(EndY, BeginY - EndY + 1);
                 foreach (int point in yPoints)
-                {
                     covers.Add((BeginX, point));
-                }
             }
             // In part 1, either Y1 == Y2 or X1 == X2
             else
             {
                 IEnumerable<int> xPoints = EndX > BeginX ? Enumerable.Range(BeginX, EndX - BeginX + 1) : Enumerable.Range(EndX, BeginX - EndX + 1);
                 foreach (int point in xPoints)
-                {
                     covers.Add((point, BeginY));
-                }
             }
-
             return covers;
         }
 
         public IEnumerable<(int, int)> GetCoveredPointsPartTwo()
         {
             List<(int, int)> covers = new();
-
             if (BeginX == EndX)
             {
                 IEnumerable<int> yPoints = EndY > BeginY ? Enumerable.Range(BeginY, EndY - BeginY + 1) : Enumerable.Range(EndY, BeginY - EndY + 1);
                 foreach (int point in yPoints)
-                {
                     covers.Add((BeginX, point));
-                }
             }
             else if (BeginY == EndY)
             {
                 IEnumerable<int> xPoints = EndX > BeginX ? Enumerable.Range(BeginX, EndX - BeginX + 1) : Enumerable.Range(EndX, BeginX - EndX + 1);
                 foreach (int point in xPoints)
-                {
                     covers.Add((point, BeginY));
-                }
             }
             //covering diagonal points.
             else
@@ -68,11 +57,8 @@ namespace AdventOfCode2021
                     yPoints.Reverse();
 
                 for (int i = 0; i < xPoints.Count; i++)
-                {
                     covers.Add((xPoints[i], yPoints[i]));
-                }
             }
-
             return covers;
         }
         
@@ -155,10 +141,8 @@ namespace AdventOfCode2021
                     HashSet<(int, int)> foundIntersections = new(iCoveredPoints.Intersect(jCoveredPoints));
 
                     if (foundIntersections.Any())
-                    {
                         foreach ((int, int) intersection in foundIntersections)
                             intersections.Add(intersection);
-                    }
                 }
             } 
             return intersections.Count;
