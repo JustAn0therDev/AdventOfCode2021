@@ -6,8 +6,8 @@ namespace AdventOfCode2021
 {
     public class DayThree : AbstractDay
     {
-        private readonly string DayThreePartOneInputPath = "inputs\\daythree_partone.txt"; 
-        private readonly string DayThreePartTwoInputPath = "inputs\\daythree_parttwo.txt";
+        private const string DayThreePartOneInputPath = "inputs\\daythree_partone.txt"; 
+        private const string DayThreePartTwoInputPath = "inputs\\daythree_parttwo.txt";
         private const int LineSize = 12;
         
         public override long PartOne()

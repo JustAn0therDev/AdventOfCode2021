@@ -14,7 +14,7 @@ namespace AdventOfCode2021
     public class DayFour : AbstractDay
     {
         private const int GridSize = 5;
-        private readonly string DayFourInputPath = "Inputs\\dayfour_partone.txt";
+        private const string DayFourInputPath = "Inputs\\dayfour_partone.txt";
         
         public override long PartOne()
         {
