@@ -7,7 +7,7 @@ namespace AdventOfCode2021
 {
     internal class Cell
     {
-        internal int Value { get; set; }
+        internal int Value { get; init; }
         internal bool Marked { get; set; }
     } 
     
@@ -22,7 +22,7 @@ namespace AdventOfCode2021
             
             ImmutableArray<int> draws = lines[0].Split(',').Select(s => int.Parse(s)).ToImmutableArray();
 
-            List<Cell[,]> grids = GetGridsFromInput(lines.Where(static (_, i) => i > 1).ToList());
+            List<Cell[,]> grids = GetGridsFromInput(lines.Where((_, i) => i > 1).ToList());
 
             foreach (int call in draws)
             {
