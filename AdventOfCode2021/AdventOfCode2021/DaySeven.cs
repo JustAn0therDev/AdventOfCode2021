@@ -12,7 +12,6 @@ namespace AdventOfCode2021
     
     public class DaySeven : AbstractDay
     {
-        //private const string DaySevenInputPath = "Inputs\\dayseven.test";
         private const string DaySevenInputPath = "Inputs\\dayseven.txt";
         
         public override long PartOne()
@@ -90,7 +89,6 @@ namespace AdventOfCode2021
             }
 
             return fuelCount;
-
         }
         
         private static long GetGoal(IReadOnlyCollection<int> positions)

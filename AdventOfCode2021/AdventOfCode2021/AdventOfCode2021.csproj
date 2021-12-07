@@ -23,7 +23,6 @@
       <None Update="Inputs\daythree_partone.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Remove="Inputs\daythree_test.txt" />
       <None Update="Inputs\daythree_parttwo.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
@@ -36,7 +35,6 @@
       <None Update="Inputs\daysix.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Remove="Inputs\daysix.test" />
       <None Update="Inputs\dayseven.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
