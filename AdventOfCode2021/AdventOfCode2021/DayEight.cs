@@ -52,7 +52,7 @@ namespace AdventOfCode2021
                     ['7'] = string.Empty
                 };
 
-                List<string> firstTwoEl = firstSegment.OrderBy(o => o.Length).Take(2..3).ToList();
+                List<string> firstTwoEl = firstSegment.OrderBy(o => o.Length).Take(1..3).ToList();
 
                 segmentToChar['7'] = firstTwoEl[0];
                 segmentToChar['4'] = firstTwoEl[1];
