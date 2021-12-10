@@ -19,12 +19,13 @@ namespace AdventOfCode2021
         /// This method reads a file given as input (in the path specified) and returns its content split by '\n'.
         /// </summary>
         /// <param name="inputPath">The path of the input file.</param>
+        /// <param name="separator">Optional separator for the file.</param>
         /// <returns>An array of strings, each containing the contents of a line of the file.</returns>
         /// <exception cref="NotImplementedException">Throws this exception if not implemented</exception>
         /// <exception cref="FileNotFoundException">
         /// Throws this exception if the file does not exist at the specified path (you might have forgotten to set the file to
         /// be copied to output when compiling in the AdventOfCode2021.csproj file).
         /// </exception>
-        protected static string[] GetInput(string inputPath, string separator = null) => File.ReadAllText(inputPath).Split(string.IsNullOrEmpty(separator) ? "\r\n" : separator);
+        protected static string[] GetInput(string inputPath, string separator = "") => File.ReadAllText(inputPath).Split(string.IsNullOrEmpty(separator) ? "\r\n" : separator);
     }
 }

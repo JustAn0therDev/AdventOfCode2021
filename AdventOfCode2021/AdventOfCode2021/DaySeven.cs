@@ -48,7 +48,7 @@ namespace AdventOfCode2021
         {
             long fuelCount = 0;
 
-            List<int> submarinePositions = GetInput(DaySevenInputPath, ",").Select(s => int.Parse(s)).ToList();
+            List<int> submarinePositions = GetInput(DaySevenInputPath, ",").Select(int.Parse).ToList();
 
             long goal = (long)Math.Floor((double)submarinePositions.Sum() / submarinePositions.Count);
             

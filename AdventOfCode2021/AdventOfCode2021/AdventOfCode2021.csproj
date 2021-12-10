@@ -44,6 +44,9 @@
       <None Update="Inputs\daynine.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Inputs\dayten.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
 
     </ItemGroup>
 
