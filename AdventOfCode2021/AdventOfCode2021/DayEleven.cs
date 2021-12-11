@@ -35,7 +35,7 @@ public class DayEleven : AbstractDay
             {  
                 for (int j = 0; j < GridSize; j++)
                 {
-                    if (grid[i, j] >= 9)
+                    if (grid[i, j] == 9)
                     {
                         result += GetResultFromCell(grid, i, j, flashedThisStep);
                     } 
@@ -64,7 +64,7 @@ public class DayEleven : AbstractDay
             {  
                 for (int j = 0; j < GridSize; j++)
                 {
-                    if (grid[i, j] >= 9)
+                    if (grid[i, j] == 9)
                     {
                         GetResultFromCell(grid, i, j, flashedThisStep);
                     } 
@@ -128,7 +128,7 @@ public class DayEleven : AbstractDay
 
         if (canCheckLeft)
         {
-            if (grid[i, j - 1] >= 9)
+            if (grid[i, j - 1] == 9)
             {
                 count += GetResultFromCell(grid, i, j - 1, flashedThisStep);
             }
@@ -140,7 +140,7 @@ public class DayEleven : AbstractDay
 
         if (canCheckRight)
         {
-            if (grid[i, j + 1] >= 9)
+            if (grid[i, j + 1] == 9)
             {
                 count += GetResultFromCell(grid, i, j + 1, flashedThisStep);
             }
@@ -152,7 +152,7 @@ public class DayEleven : AbstractDay
 
         if (canCheckUp)
         {
-            if (grid[i - 1, j] >= 9)
+            if (grid[i - 1, j] == 9)
             {
                 count += GetResultFromCell(grid, i - 1, j, flashedThisStep);
             }
@@ -164,7 +164,7 @@ public class DayEleven : AbstractDay
 
         if (canCheckDown)
         {
-            if (grid[i + 1, j] >= 9)
+            if (grid[i + 1, j] == 9)
             {
                 count += GetResultFromCell(grid, i + 1, j, flashedThisStep);
             }
@@ -176,7 +176,7 @@ public class DayEleven : AbstractDay
         
         if (canCheckLowerRight)
         {
-            if (grid[i + 1, j + 1] >= 9)
+            if (grid[i + 1, j + 1] == 9)
             {
                 count += GetResultFromCell(grid, i + 1, j + 1, flashedThisStep);
             }
@@ -188,7 +188,7 @@ public class DayEleven : AbstractDay
         
         if (canCheckUpperRight)
         {
-            if (grid[i - 1, j + 1] >= 9)
+            if (grid[i - 1, j + 1] == 9)
             {
                 count += GetResultFromCell(grid, i - 1, j + 1, flashedThisStep);
             }
@@ -200,7 +200,7 @@ public class DayEleven : AbstractDay
 
         if (canCheckLowerLeft)
         {
-            if (grid[i + 1, j - 1] >= 9)
+            if (grid[i + 1, j - 1] == 9)
             {
                 count += GetResultFromCell(grid, i + 1, j - 1, flashedThisStep);
             }
@@ -212,7 +212,7 @@ public class DayEleven : AbstractDay
         
         if (canCheckUpperLeft)
         {
-            if (grid[i - 1, j - 1] >= 9)
+            if (grid[i - 1, j - 1] == 9)
             {
                 count += GetResultFromCell(grid, i - 1, j - 1, flashedThisStep);
             }
