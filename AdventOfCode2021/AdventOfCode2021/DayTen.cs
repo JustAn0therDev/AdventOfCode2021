@@ -3,7 +3,7 @@
 internal class SubmarineChar
 {
     internal char Close { get; }
-
+    
     internal SubmarineChar(char close)
     {
         Close = close;
@@ -47,7 +47,7 @@ public class DayTen : AbstractDay
 
         foreach (string line in input)
         {
-            Stack<SubmarineChar> openChars = new ();
+            Stack<SubmarineChar> openChars = new();
             foreach (char ch in line)
             {
                 if (ch is '(' or '[' or '{' or '<')
