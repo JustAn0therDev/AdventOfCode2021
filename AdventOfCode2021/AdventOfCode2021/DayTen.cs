@@ -114,7 +114,7 @@ public class DayTen : AbstractDay
 
             long lineScore = 0;
             
-            while (openChars.TryPeek(out SubmarineChar submarineChar))
+            while (openChars.TryPeek(out SubmarineChar? submarineChar))
             {
                 lineScore *= 5;
                 lineScore += _charPointsPartTwo[submarineChar.Close];
