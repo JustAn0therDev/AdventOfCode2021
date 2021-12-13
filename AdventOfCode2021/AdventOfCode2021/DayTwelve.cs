@@ -1,43 +1,39 @@
 ﻿namespace AdventOfCode2021;
 
-// For this day, credits to Jonathan Paulson.
-// Haven't managed to solve this day on time and his explanation of
-// keeping state was really clarifying for me.
+// For this day, credits to "Jonathan Paulson". His explanation and solution made me understand how to traverse graphs
+// and check every possible edge and vertex combination.
+// The current solution is mine. Instead of having an adjacency list to check the possible nodes,
+// I'm using DFS to know which neighbors have already been visited and when we got to the end.
 public class DayTwelve : AbstractDay
 {
-    //private const string DayTwelveInputPath = "Inputs\\daytwelve.test";
     private const string DayTwelveInputPath = "Inputs\\daytwelve.txt";
     
     public override long PartOne()
     {
-        int paths = 0;
         IReadOnlyDictionary<string, List<string>> caves = GetInput();
-        Queue<(string, HashSet<string>)> queue = new();
-        
-        queue.Enqueue(("start", new HashSet<string> { "start" }));
+        return DFSPartOne("start", caves, new HashSet<string> { "start" });
+    }
 
-        while (queue.Count > 0)
+    private static int DFSPartOne(string source, IReadOnlyDictionary<string, List<string>> caves, ISet<string> neighbors)
+    {
+        int paths = 0;
+
+        if (source == "end")
         {
-            (string vertex, HashSet<string> neighbors) = queue.Dequeue();
-            
-            if (vertex == "end")
+            paths++;
+            return paths;
+        }
+        
+        foreach (string destination in caves[source])
+        {
+            if (!neighbors.Contains(destination))
             {
-                paths++;
-                continue;
-            }
-            
-            foreach (string destination in caves[vertex])
-            {
-                if (!neighbors.Contains(destination))
-                {
-                    HashSet<string> newNeighbors = new(neighbors);
-                    if (char.IsLower(destination[0]))
-                    {
-                        newNeighbors.Add(destination);
-                    }
-                    
-                    queue.Enqueue((destination, newNeighbors));
-                }
+                HashSet<string> newVisited = new(neighbors);
+                
+                if (char.IsLower(destination[0]))
+                    newVisited.Add(destination);
+                
+                paths += DFSPartOne(destination, caves, newVisited);
             }
         }
 
@@ -87,39 +83,34 @@ public class DayTwelve : AbstractDay
     
     public override long PartTwo()
     {
-        int paths = 0;
         IReadOnlyDictionary<string, List<string>> caves = GetInput();
-        Queue<(string, HashSet<string>, string?)> queue = new();
-        
-        queue.Enqueue(("start", new HashSet<string> { "start" }, null));
+        return DFSPartTwo("start", caves, new HashSet<string> { "start" }, visitedTwice: false);
+    }
 
-        while (queue.Count > 0)
+    private static int DFSPartTwo(string source, IReadOnlyDictionary<string, List<string>> caves,
+        ISet<string> neighbors, bool visitedTwice)
+    {
+        int paths = 0;
+
+        if (source == "end")
         {
-            (string vertex, HashSet<string> neighbors, string? visitedTwice) = queue.Dequeue();
-            
-            if (vertex == "end")
+            paths++;
+            return paths;
+        }
+        
+        foreach (string destination in caves[source])
+        {
+            if (!neighbors.Contains(destination))
             {
-                paths++;
-                continue;
-            }
-            
-            foreach (string destination in caves[vertex])
+                HashSet<string> newVisited = new(neighbors);
+                
+                if (char.IsLower(destination[0]))
+                    newVisited.Add(destination);
+                
+                paths += DFSPartTwo(destination, caves, newVisited, visitedTwice);
+            } else if (destination is not "start" and not "end" && !visitedTwice)
             {
-                if (!neighbors.Contains(destination))
-                {
-                    HashSet<string> newNeighbors = new(neighbors);
-                    if (char.IsLower(destination[0]))
-                    {
-                        newNeighbors.Add(destination);
-                    }
-                    
-                    queue.Enqueue((destination, newNeighbors, visitedTwice));
-                }
-                else if (neighbors.Contains(destination) && visitedTwice is null &&
-                         destination is not "end" && destination is not "start")
-                {
-                    queue.Enqueue((destination, neighbors, destination)); 
-                }
+                paths += DFSPartTwo(destination, caves, neighbors, visitedTwice: true);
             }
         }
 
