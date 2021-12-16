@@ -1,3 +1,3 @@
 ﻿using AdventOfCode2021;
 
-Console.WriteLine(new DayThirteen().PartTwo());
+Console.WriteLine(new DayFourteen().PartTwo());
